@@ -11,7 +11,6 @@ import com.example.colorfragments.R
 
 class ColorFragment : Fragment() {
 
-    // Static counter for fragment instances
     companion object {
         var fragmentCount: Int = 0
 
@@ -23,17 +22,14 @@ class ColorFragment : Fragment() {
             }
     }
 
-    // Instance-specific UID
     private var myIndex: Int = 0
 
-    // Reference to the TextView in the fragment
     private val chosenColorTV: TextView?
         get() = view?.findViewById(R.id.mycolor)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Increment counter and set ID only if this is the first time
         if (savedInstanceState == null) {
             fragmentCount++
             myIndex = fragmentCount
@@ -44,17 +40,12 @@ class ColorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_color, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Get the color choice from arguments
         val choiceId = arguments?.getInt("COLOR CHOICE", 0) ?: 0
-
-        // Set the appropriate color and text based on the choice
         when (choiceId) {
             1 -> { // Blue
                 chosenColorTV?.text = "GENERIC BLUE FRAGMENT - UID $myIndex"

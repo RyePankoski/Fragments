@@ -15,8 +15,6 @@ class ChoiceFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        // Check if the activity implements ChoiceListener
         if (context is ChoiceListener) {
             choiceListener = context
         } else {
@@ -28,22 +26,21 @@ class ChoiceFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_choice, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Get references to the TextViews
         val blueT = view.findViewById<TextView>(R.id.blueText)
         val redT = view.findViewById<TextView>(R.id.redText)
 
-        // Set up click listeners
         blueT.setOnClickListener {
             val choice = 1 // 1 for blue
             choiceListener.onSelected(choice)
         }
+
+        //hello
 
         redT.setOnClickListener {
             val choice = 2 // 2 for red
